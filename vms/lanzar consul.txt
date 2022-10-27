@@ -1,0 +1,11 @@
+servidor
+consul agent -server -ui -bootstrap-expect=1 -node=agent-one -bind=192.168.100.3 -client=0.0.0.0  -data-dir=/tmp/consul -config-dir=/etc/consul.d
+cliente
+consul agent -node=agent-two -bind=192.168.100.2 -enable-script-checks=true -data-dir=/tmp/consul -config-dir=/etc/consul.d
+consul join 192.168.100.3
+
+
+consul agent -server -ui -node=agent-one -bind=192.168.100.24 -client=0.0.0.0  -data-dir=/tmp/consul -config-dir=/etc/consul.d
+
+
+consul agent -node=agent-two -bind=192.168.100.25 -enable-script-checks=true -data-dir=/tmp/consul -config-dir=/etc/consul.d
